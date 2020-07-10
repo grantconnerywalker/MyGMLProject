@@ -4,16 +4,53 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\aShoot</sound>
+    <sound>sound\aPlayerDeath</sound>
+    <sound>sound\aEnemyHit</sound>
+    <sound>sound\aEnemyDefeat</sound>
+    <sound>sound\aEnemySpawn</sound>
+    <sound>sound\aGameStart</sound>
+    <sound>sound\aMeow</sound>
+  </sounds>
   <sprites name="sprites">
     <sprite>sprites\sPlayer</sprite>
+    <sprite>sprites\sPlayerChunk</sprite>
     <sprite>sprites\sBullet</sprite>
+    <sprite>sprites\sHeartGun</sprite>
+    <sprite>sprites\sCat</sprite>
+    <sprite>sprites\sCatGun</sprite>
+    <sprite>sprites\sEnemy</sprite>
+    <sprite>sprites\sEnemy_damaged</sprite>
+    <sprite>sprites\sEnemy_happy</sprite>
+    <sprite>sprites\sprite6</sprite>
+    <sprite>sprites\sExplodingEnemy</sprite>
+    <sprite>sprites\sExplodingEnemyChunk</sprite>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+    <background>background\background1</background>
+  </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\explode_into_number_of_chunks.gml</script>
+    <script>scripts\bounce_off_walls.gml</script>
+    <script>scripts\hit_by_projectile.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\oPlayer</object>
+    <object>objects\oGun</object>
+    <object>objects\oHeartGun</object>
+    <object>objects\oCatGun</object>
+    <object>objects\oEnemy</object>
+    <object>objects\oFaceEnemy</object>
+    <object>objects\oExplodingEnemy</object>
+    <object>objects\oGame</object>
+    <object>objects\oProjectile</object>
     <object>objects\oBullet</object>
+    <object>objects\oCat</object>
+    <object>objects\oPlayerChunk</object>
+    <object>objects\oExplodingEnemyChunk</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
