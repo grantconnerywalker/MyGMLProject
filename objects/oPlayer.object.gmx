@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>weapon_count = 0
+selected_weapon_index = 0
+</string>
           </argument>
         </arguments>
       </action>
@@ -78,20 +80,22 @@ if keyboard_check(ord('D')) {
     x += playerSpeed;
 }
 
+/* Weapon Switching */
+
+if mouse_check_button_pressed(mb_right) {
+    // Switch to the next weapon up
+    selected_weapon_index += 1
+    // If we've gone too far, loop back to beginning
+    if selected_weapon_index &gt;= weapon_count {
+        selected_weapon_index = 0
+    }
+    audio_play_sound(aWeaponChange, 1, false);
+}
+
 
 /* Facing */
 
 image_angle = point_direction(x, y, mouse_x, mouse_y);
-
-
-/* Pick Up Weapons */
-
-weapon_touching = instance_place(x,y,oGun)
-
-if instance_exists(weapon_touching) {
-    current_weapon = weapon_touching
-    current_weapon.owner = self.id
-}
 
 
 /* Stay Inside Room */
@@ -112,20 +116,12 @@ if (y &gt; room_height) {
 
 /* Death */
 
-// TODO update to take away health, maybe brief invuln, doing damage?
 enemy_touching_me = instance_place(x, y, oEnemy);
 if (enemy_touching_me) {
 
     explode_into_number_of_chunks(oGame.player_bits, oPlayerChunk);
 
-    /*for (i = 0; i &lt; oGame.player_bits; i++) {
-        new_bit = instance_create(x, y, oPlayerChunk);
-    }
-    
-    audio_play_sound(aPlayerDeath, 1, false);
-    instance_destroy();*/
 }
-
 </string>
           </argument>
         </arguments>

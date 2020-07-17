@@ -26,6 +26,9 @@
           <argument>
             <kind>1</kind>
             <string>owner = noone
+
+seconds_between_shots = 0.5
+seconds_since_last_shot = 0
 </string>
           </argument>
         </arguments>
@@ -59,28 +62,39 @@ if instance_exists(owner) {
     image_angle = owner.image_angle
     default_speed = 600/room_speed;
     
-    /* Shooting */
-    var fireButton = mb_left;
-    
-    // mouse_check_button for holding,
-    // or you can use mouse_check_button_pressed for "semi auto"
-    if mouse_check_button(fireButton) {
-        myBullet = instance_create(x, y, oCat);
         
-        myBullet.speed = default_speed;
-        myBullet.direction = image_angle;
-        myBullet.image_angle = image_angle;
+    if owner.weapons_array[owner.selected_weapon_index] == self.id {
     
-        // Kickback code
+        /* Shooting */
+        var fireButton = mb_left;
+        
+        // Increment timer
+        seconds_since_last_shot += 1/room_speed
+        
+        // mouse_check_button for holding,
+        // or you can use mouse_check_button_pressed for "semi auto"
+        // If we are clicking AND ready to fire
+        if mouse_check_button(fireButton) and seconds_since_last_shot &gt;= seconds_between_shots {
             
-        kick_back = 200 / room_speed;
-        kick_direction = image_angle + 180
+            seconds_since_last_shot = 0
         
-        owner.x += lengthdir_x(kick_back, kick_direction);
-        owner.y += lengthdir_y(kick_back, kick_direction);
+            myBullet = instance_create(x, y, oCat);
+            
+            myBullet.speed = default_speed;
+            myBullet.direction = image_angle;
+            myBullet.image_angle = image_angle;
         
-        audio_play_sound(aMeow, 1, false);
-        
+            // Kickback code
+                
+            kick_back = 1500 / room_speed;
+            kick_direction = image_angle + 180
+            
+            owner.x += lengthdir_x(kick_back, kick_direction);
+            owner.y += lengthdir_y(kick_back, kick_direction);
+            
+            audio_play_sound(aMeow, 1, false);
+            
+        }
     }
     
 } else {
@@ -88,6 +102,8 @@ if instance_exists(owner) {
     visible = true;
     
 }
+
+can_be_picked_up()
 </string>
           </argument>
         </arguments>

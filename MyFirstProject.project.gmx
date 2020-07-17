@@ -12,20 +12,27 @@
     <sound>sound\aEnemySpawn</sound>
     <sound>sound\aGameStart</sound>
     <sound>sound\aMeow</sound>
+    <sound>sound\aWeaponChange</sound>
+    <sound>sound\aWaveGun</sound>
+    <sound>sound\aRevive</sound>
+    <sound>sound\aSplosion</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sPlayer</sprite>
     <sprite>sprites\sPlayerChunk</sprite>
     <sprite>sprites\sBullet</sprite>
-    <sprite>sprites\sHeartGun</sprite>
+    <sprite>sprites\sLoveGun</sprite>
+    <sprite>sprites\sWaveGun</sprite>
     <sprite>sprites\sCat</sprite>
     <sprite>sprites\sCatGun</sprite>
+    <sprite>sprites\sLiquidShot</sprite>
     <sprite>sprites\sEnemy</sprite>
     <sprite>sprites\sEnemy_damaged</sprite>
     <sprite>sprites\sEnemy_happy</sprite>
     <sprite>sprites\sprite6</sprite>
     <sprite>sprites\sExplodingEnemy</sprite>
     <sprite>sprites\sExplodingEnemyChunk</sprite>
+    <sprite>sprites\sSplosion</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -36,11 +43,14 @@
     <script>scripts\explode_into_number_of_chunks.gml</script>
     <script>scripts\bounce_off_walls.gml</script>
     <script>scripts\hit_by_projectile.gml</script>
+    <script>scripts\can_be_picked_up.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\NOTES</object>
     <object>objects\oPlayer</object>
     <object>objects\oGun</object>
     <object>objects\oHeartGun</object>
+    <object>objects\oWaveGun</object>
     <object>objects\oCatGun</object>
     <object>objects\oEnemy</object>
     <object>objects\oFaceEnemy</object>
@@ -49,8 +59,10 @@
     <object>objects\oProjectile</object>
     <object>objects\oBullet</object>
     <object>objects\oCat</object>
+    <object>objects\oLiquidShot</object>
     <object>objects\oPlayerChunk</object>
     <object>objects\oExplodingEnemyChunk</object>
+    <object>objects\oSplosion</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>
