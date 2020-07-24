@@ -33,6 +33,7 @@
     <sprite>sprites\sExplodingEnemy</sprite>
     <sprite>sprites\sExplodingEnemyChunk</sprite>
     <sprite>sprites\sSplosion</sprite>
+    <sprite>sprites\sSolid</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -44,6 +45,7 @@
     <script>scripts\bounce_off_walls.gml</script>
     <script>scripts\hit_by_projectile.gml</script>
     <script>scripts\can_be_picked_up.gml</script>
+    <script>scripts\fire_gun.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\NOTES</object>
@@ -63,6 +65,7 @@
     <object>objects\oPlayerChunk</object>
     <object>objects\oExplodingEnemyChunk</object>
     <object>objects\oSplosion</object>
+    <object>objects\oSolid</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room0</room>

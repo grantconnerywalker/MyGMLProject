@@ -54,7 +54,7 @@ direction = random(360);
             <string>/* Facing */
 
 image_angle = direction;
-bounce_off_walls();
+bounce_off_walls()
 
 
 /* Damage */

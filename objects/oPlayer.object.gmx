@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>weapon_count = 0
 selected_weapon_index = 0
+facing = 0
+kick_x = 0;
+kick_y = 0;
 </string>
           </argument>
         </arguments>
@@ -51,33 +54,67 @@ selected_weapon_index = 0
             <kind>1</kind>
             <string>/* Movement */
 
-var defaultSpeed = 300 / room_speed;
-var playerSpeed = defaultSpeed;
-var sprintButton = vk_shift;
-var sprintModifier = 1.5;
+var defaultSpeed = 300 / room_speed
+speed = 0
+var playerSpeed = defaultSpeed
+var sprintButton = vk_shift
+var sprintModifier = 1.5
 
-// TODO look up why this has to be before the other checks in order to work
+// Allow player to sprint!
 if keyboard_check(vk_shift) {
-    /*show_debug_message("shift pressed");(*/
     playerSpeed = defaultSpeed * sprintModifier;
 } else {
     playerSpeed = defaultSpeed;
 }
 
 if keyboard_check(ord('W')) {
-    y -= playerSpeed;
+    vspeed = -defaultSpeed
 }
 
 if keyboard_check(ord('S')) {
-    y += playerSpeed;
+    vspeed = defaultSpeed;
 }
 
 if keyboard_check(ord('A')) {
-    x -= playerSpeed;
+    hspeed = -defaultSpeed;
 }
 
 if keyboard_check(ord('D')) {
-    x += playerSpeed;
+    hspeed = defaultSpeed;
+}
+
+// Account for kickback in hspeed/vspeed for collision purposes
+hspeed = hspeed + kick_x
+vspeed = vspeed + kick_y
+kick_x = 0
+kick_y = 0
+
+/* Hitting a wall (if about to hit a block, stop) */
+if place_meeting(x + hspeed, y + vspeed, oSolid) {
+    
+    // Keep as much of our horizontal speed as possible
+    old_hspeed = hspeed;
+    hspeed = 0;
+    while 
+        place_meeting(x + hspeed + sign(old_hspeed), y, oSolid) == false &amp;&amp; // check there's still room if we crept closer to old hspeed
+        abs(hspeed) &lt; abs(old_hspeed) // Check we haven't restored all of our old hspeed, considering only absolute values
+    {
+        // Creep towards old hspeed
+        hspeed = hspeed + sign(old_hspeed);
+    }
+    
+    // We have now figured out how much of our hspeed we can keep without hitting, so keep that
+    
+    // Keep as much of our vertical speed as possible
+    old_vspeed = vspeed;
+    vspeed = 0;
+    while 
+        place_meeting(x + hspeed, y + vspeed + sign(old_vspeed), oSolid) == false &amp;&amp; // check there's still room if we crept closer to old vspeed
+        abs(vspeed) &lt; abs(old_vspeed) // Check we haven't restored all of our old vspeed, considering only absolute values
+    {
+        // Creep towards old vspeed
+        vspeed = vspeed + sign(old_vspeed);
+    }
 }
 
 /* Weapon Switching */
@@ -95,7 +132,7 @@ if mouse_check_button_pressed(mb_right) {
 
 /* Facing */
 
-image_angle = point_direction(x, y, mouse_x, mouse_y);
+facing = point_direction(x, y, mouse_x, mouse_y);
 
 
 /* Stay Inside Room */
@@ -122,6 +159,36 @@ if (enemy_touching_me) {
     explode_into_number_of_chunks(oGame.player_bits, oPlayerChunk);
 
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/* Notes */
+// draw_sprite(sprite_index,image_index,x,y) // what GMS does when drawing
+
+/* Special Drawing */
+
+// Draw sprite normally, but facing our 'facing' without changing image_angle, so as not to affect collision
+// Most of these (except for the rot argument) just mean "draw this piece as normal"
+draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, facing, image_blend, image_alpha)
 </string>
           </argument>
         </arguments>

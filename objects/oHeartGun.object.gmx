@@ -48,42 +48,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Gun should destroy itself if player ever dies
+            <string>// Unique gun variables
+shot_type = oBullet;
+bullet_speed = 1200 / room_speed;
+bullet_direction = image_angle;
+kick_back = 1000 / room_speed;
+sound_type = aShoot;
+
+// Gun should destroy itself if player ever dies
 
 if instance_exists(owner) {
     
     // Hide gun sprite once it's picked up
     visible = false;
-
+    
     x = owner.x
     y = owner.y
-    image_angle = owner.image_angle
-    default_speed = 1200 / room_speed;
+    image_angle = owner.facing
     
     if owner.weapons_array[owner.selected_weapon_index] == self.id {
     
         /* Shooting */
         var fireButton = mb_left;
         
-        // mouse_check_button for holding,
-        // or you can use mouse_check_button_pressed for "semi auto"
+        //If we're clicking
         if mouse_check_button_pressed(fireButton) {
-            myBullet = instance_create(x, y, oBullet);
-            
-            myBullet.speed = default_speed;
-            myBullet.direction = image_angle;
-            myBullet.image_angle = image_angle;
-        
-            // Kickback code
-                
-            kick_back = 1000 / room_speed;
-            kick_direction = image_angle + 180
-            
-            owner.x += lengthdir_x(kick_back, kick_direction);
-            owner.y += lengthdir_y(kick_back, kick_direction);
-            
-            audio_play_sound(aShoot, 1, false);
-        
+            fire_gun(shot_type, bullet_speed, bullet_direction, kick_back, sound_type)
         }
     }
     

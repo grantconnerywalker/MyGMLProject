@@ -56,6 +56,12 @@ if (x &lt; 0 || x &gt; room_width || y &lt; 0 || y &gt; room_height) {
     instance_destroy()
 }
 
+// Hitting a wall (if about to hit a block, stop)
+if place_meeting(x + hspeed, y + vspeed, oSolid) {
+    speed = 0;
+}
+
+// Slowing down after shot
 deceleration = 800 / (room_speed*room_speed)
 if speed &gt; deceleration {
     speed -= deceleration

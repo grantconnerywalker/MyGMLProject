@@ -48,42 +48,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Gun should destroy itself if player ever dies
+            <string>// Unique gun variables
+shot_type = oLiquidShot;
+bullet_speed = random_range(600,700) / room_speed;
+bullet_direction = image_angle + random_range(-5,5);
+kick_back = 50 / room_speed;
+sound_type = aWaveGun;
+
+
+// Gun should destroy itself if player ever dies
 
 if instance_exists(owner) {
     
     // Hide gun sprite once it's picked up
     visible = false;
-
+    
     x = owner.x
     y = owner.y
-    image_angle = owner.image_angle
-    default_speed = random_range(600,700) / room_speed;
+    image_angle = owner.facing
     
     if owner.weapons_array[owner.selected_weapon_index] == self.id {
     
         /* Shooting */
         var fireButton = mb_left;
         
-        // mouse_check_button for holding,
-        // or you can use mouse_check_button_pressed for "semi auto"
+        //If we're clicking AND we're ready to fire
         if mouse_check_button(fireButton) {
-            myBullet = instance_create(x, y, oLiquidShot);
-            
-            myBullet.speed = default_speed;
-            myBullet.direction = image_angle + random_range(-5,5);
-            myBullet.image_angle = myBullet.direction;
-        
-            // Kickback code
-                
-            kick_back = 50 / room_speed;
-            kick_direction = image_angle + 180
-            
-            owner.x += lengthdir_x(kick_back, kick_direction);
-            owner.y += lengthdir_y(kick_back, kick_direction);
-            
-            audio_play_sound(aWaveGun, 1, false);
-        
+            seconds_since_last = 0
+            fire_gun(shot_type, bullet_speed, bullet_direction, kick_back, sound_type)        
         }
     }
     
