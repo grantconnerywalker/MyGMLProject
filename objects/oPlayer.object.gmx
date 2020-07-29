@@ -28,8 +28,8 @@
             <string>weapon_count = 0
 selected_weapon_index = 0
 facing = 0
-kick_x = 0;
-kick_y = 0;
+
+reset_shunts()
 </string>
           </argument>
         </arguments>
@@ -84,10 +84,9 @@ if keyboard_check(ord('D')) {
 }
 
 // Account for kickback in hspeed/vspeed for collision purposes
-hspeed = hspeed + kick_x
-vspeed = vspeed + kick_y
-kick_x = 0
-kick_y = 0
+hspeed += kick_x
+vspeed += kick_y
+reset_shunts()
 
 /* Hitting a wall (if about to hit a block, stop) */
 if place_meeting(x + hspeed, y + vspeed, oSolid) {

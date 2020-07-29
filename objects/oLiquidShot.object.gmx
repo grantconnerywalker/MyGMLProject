@@ -72,8 +72,8 @@ if speed &gt; deceleration {
 // Push an enemy away when hitting it
 enemy_hit = instance_place(x,y,oEnemy)
 if instance_exists(enemy_hit) {
-    enemy_hit.x += lengthdir_x(speed, direction)
-    enemy_hit.y += lengthdir_y(speed, direction)
+    enemy_hit.kick_x += lengthdir_x(speed, direction)
+    enemy_hit.kick_y += lengthdir_y(speed, direction)
 }
 
 // Blowing up the water when hit

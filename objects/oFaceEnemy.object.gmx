@@ -25,10 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>speed = 60 / room_speed;
-// direction = oPlayer.x, oPlayer.y
-direction = random(360);
-//audio_play_sound(aEnemySpawn, 1, false);
+            <string>initialize_enemy_collision(60, 360)
 </string>
           </argument>
         </arguments>
@@ -54,8 +51,8 @@ direction = random(360);
             <string>/* Facing */
 
 image_angle = direction;
-bounce_off_walls();
-
+stay_inside_room();
+enemy_collision_with_solids()
 
 /* Damage */
 

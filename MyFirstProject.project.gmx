@@ -42,10 +42,14 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\explode_into_number_of_chunks.gml</script>
-    <script>scripts\bounce_off_walls.gml</script>
+    <script>scripts\stay_inside_room.gml</script>
     <script>scripts\hit_by_projectile.gml</script>
     <script>scripts\can_be_picked_up.gml</script>
     <script>scripts\fire_gun.gml</script>
+    <script>scripts\reset_shunts.gml</script>
+    <script>scripts\script6.gml</script>
+    <script>scripts\enemy_collision_with_solids.gml</script>
+    <script>scripts\initialize_enemy_collision.gml</script>
   </scripts>
   <objects name="objects">
     <object>objects\NOTES</object>
