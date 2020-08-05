@@ -69,6 +69,7 @@ if instance_exists(owner) {
     x = owner.x
     y = owner.y
     image_angle = owner.facing
+    seconds_between = 6 / owner.power_current
     
     if owner.weapons_array[owner.selected_weapon_index] == self.id {
     

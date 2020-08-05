@@ -4,7 +4,7 @@
   <solid>0</solid>
   <visible>-1</visible>
   <depth>0</depth>
-  <persistent>0</persistent>
+  <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
@@ -25,23 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// TODO spawn an additional player to control after the player kills x enemies???
-
-/* Enemy Spawning */
-seconds_between_spawns = 1;
-seconds_since_last_spawn = 0;
-
-
-/* Global Constants */
-player_bits = 16;
-bits_regenerated = 0;
-
-
-/* Game Start */
-
-// Game start sound
-audio_play_sound(aGameStart, 1, false);
-
+            <string>mode = "Titles"
 </string>
           </argument>
         </arguments>
@@ -64,39 +48,89 @@ audio_play_sound(aGameStart, 1, false);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/* Enemy Spawning */
-seconds_since_last_spawn += 1/room_speed;
-
-if seconds_since_last_spawn &gt;= seconds_between_spawns {
-    // Spawn enemy
-    seconds_since_last_spawn = 0;
-    if choose(true, false) {
-        randomX = random(room_width);
-        randomY = choose(0, room_height);
+            <string>
+/* Quitting */
+if keyboard_check_pressed(vk_escape) {
+    if mode == "Game" {
+        mode = "Titles"
     } else {
-        randomX = choose(0, room_width);
-        randomY = random(room_height);
+        mode = "Game"
     }
-    
-    // Loop should prevent enemy from spawning on Player
-    while instance_exists(instance_place(x,y,oPlayer)) {
-        randomX = random(room_width);
-        randomY = random(room_height);        
-    }
-    instance_create(randomX, randomY, choose(oFaceEnemy,oExplodingEnemy,oExplodingEnemy)); // makes oExplodingEnemy 2x as likely to spawn
-    
 }
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="64">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>
+if mode == "Titles" {
+    // Centers x and y (place x at half of view in each direction
+    x = view_hport[0] / 1.1
+    y = 0
+    
+    current_y = y
+    current_x = x
+    margin = 10
+    
+    
+    draw_set_halign(fa_center)
+    
+    draw_set_font(fTitle)
+    draw_text_and_update_current_y("NOXP")
+    
+    draw_set_font(fMenu)
+    draw_text_and_update_current_y("A game made for a tutorial.")
+    
+    current_y += 50
+    
+    if button_pressed("New Game") {
+        mode = "Game"
+        room_goto(rGame)
+    }
+    
+    if button_pressed("Quit") {
+        game_end()
+    
+    }
+} else if mode == "Game" {
+    
+    if instance_exists(oPlayer) {
 
-/* Quitting */
-/*if keyboard_check_pressed(vk_escape) {
-    game_end();
-}*/
+        // Draw power bar
+        bar_indent = 50
+        bar_width = view_wport - (bar_indent * 2)
+        bar_height = 20
+        bar_top = (view_hport - bar_indent) - bar_height
+        
+        power_fraction = oPlayer.power_current / oPlayer.power_max
+        
+        draw_set_color(c_green)
+        draw_set_alpha(0.7)
+        draw_rectangle(bar_indent, bar_top, (bar_indent + bar_width), (bar_top + bar_height), true)
+        draw_rectangle(bar_indent, bar_top, (bar_indent + bar_width*power_fraction), (bar_top + bar_height), false)
+        draw_set_alpha(1)
+    
+    }
 
-/* Restarting */
-/*if keyboard_check_pressed(ord('R')) {
-    game_restart();
-}*/
+}
 </string>
           </argument>
         </arguments>

@@ -26,6 +26,7 @@
     <sprite>sprites\sCat</sprite>
     <sprite>sprites\sCatGun</sprite>
     <sprite>sprites\sLiquidShot</sprite>
+    <sprite>sprites\sPowerUp</sprite>
     <sprite>sprites\sEnemy</sprite>
     <sprite>sprites\sEnemy_damaged</sprite>
     <sprite>sprites\sEnemy_happy</sprite>
@@ -47,10 +48,18 @@
     <script>scripts\can_be_picked_up.gml</script>
     <script>scripts\fire_gun.gml</script>
     <script>scripts\reset_shunts.gml</script>
-    <script>scripts\script6.gml</script>
     <script>scripts\enemy_collision_with_solids.gml</script>
     <script>scripts\initialize_enemy_collision.gml</script>
+    <scripts name="Menus">
+      <script>scripts\draw_text_and_update_current_y.gml</script>
+      <script>scripts\button_pressed.gml</script>
+      <script>scripts\initialize_room.gml</script>
+    </scripts>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\fTitle</font>
+    <font>fonts\fMenu</font>
+  </fonts>
   <objects name="objects">
     <object>objects\NOTES</object>
     <object>objects\oPlayer</object>
@@ -61,7 +70,6 @@
     <object>objects\oEnemy</object>
     <object>objects\oFaceEnemy</object>
     <object>objects\oExplodingEnemy</object>
-    <object>objects\oGame</object>
     <object>objects\oProjectile</object>
     <object>objects\oBullet</object>
     <object>objects\oCat</object>
@@ -70,9 +78,13 @@
     <object>objects\oExplodingEnemyChunk</object>
     <object>objects\oSplosion</object>
     <object>objects\oSolid</object>
+    <object>objects\oGame</object>
+    <object>objects\oMenu</object>
+    <object>objects\oPowerUp</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rStart</room>
+    <room>rooms\rGame</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

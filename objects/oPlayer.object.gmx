@@ -28,6 +28,8 @@
             <string>weapon_count = 0
 selected_weapon_index = 0
 facing = 0
+power_current = 5
+power_max = 50
 
 reset_shunts()
 </string>
@@ -133,6 +135,15 @@ if mouse_check_button_pressed(mb_right) {
 
 facing = point_direction(x, y, mouse_x, mouse_y);
 
+if power_current &lt;= power_max {
+    power_up_collected = instance_place(x,y,oPowerUp)
+    if instance_exists(power_up_collected) {
+        with power_up_collected { 
+            instance_destroy() 
+        }        
+        power_current += 1
+    }
+}
 
 /* Stay Inside Room */
 

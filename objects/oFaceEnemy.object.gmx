@@ -71,50 +71,9 @@ if hit_by_projectile() {
             sprite_index = sEnemy_happy;
             break;
         case sEnemy_happy:
-        
-            // TODO right now making enemies on a timer so just destroy for now
-            /* // Create new enemies
+            // Create power up
+            instance_create(x,y,oPowerUp)
             
-            // Create legal x range for spawning
-            var legalX;
-            for (var i=0;i&lt;room_width*0.2;i+=1)
-            {
-                legalX[i] = i;
-            }
-            var legalRight;
-            for (var i=room_width*0.8;i&lt;room_width;i+=1) {
-                legalRight[i] = i;
-            }
-            // append the legal right to legal X
-            for(var i = 0; i &lt; array_length_1d(legalRight); i++) {
-                legalX[array_length_1d(legalX)] = legalRight[i];
-            }
-            
-            // Create legal y range for spawning
-            var legalY;
-            for (var i=0;i&lt;room_height*0.2;i+=1)
-            {
-                legalY[i] = i;
-            }
-            var legalBottom;
-            for (var i=room_height*0.8;i&lt;room_height;i+=1) {
-                legalBottom[i] = i;
-            }
-            // append the legal bottom to legal Y
-            for(var i = 0; i &lt; array_length_1d(legalBottom); i++) {
-                legalY[array_length_1d(legalY)] = legalBottom[i];
-            }
-            
-
-            for (i = 0; i &lt; 2; i +=1) {   
-                randomX = random_range(0, array_length_1d(legalX)-1);
-                randomY = random_range(0, array_length_1d(legalY)-1);
-                if irandom(2) == 2 {
-                    instance_create(legalX[randomX], legalY[randomY], oExplodingEnemy);
-                }
-                instance_create(legalX[randomX], legalY[randomY], oFaceEnemy);
-            } */
-                        
             // Destroy damaged enemy
             audio_play_sound(aEnemyDefeat,1,false);
             instance_destroy();
