@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>initialize_enemy_collision(60, 360)
+            <string>image_speed = 10 / room_speed
+initialize_enemy_collision(60, 360)
 </string>
           </argument>
         </arguments>

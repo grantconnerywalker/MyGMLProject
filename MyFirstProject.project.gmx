@@ -19,6 +19,7 @@
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sPlayer</sprite>
+    <sprite>sprites\sPlayerLower</sprite>
     <sprite>sprites\sPlayerChunk</sprite>
     <sprite>sprites\sBullet</sprite>
     <sprite>sprites\sLoveGun</sprite>
@@ -55,6 +56,9 @@
       <script>scripts\button_pressed.gml</script>
       <script>scripts\initialize_room.gml</script>
     </scripts>
+    <script>scripts\screen_shake.gml</script>
+    <script>scripts\save_player_data.gml</script>
+    <script>scripts\load_player_data.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fTitle</font>

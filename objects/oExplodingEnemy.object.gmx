@@ -59,6 +59,8 @@ enemy_collision_with_solids()
 
 if hit_by_projectile() {
     
+    screen_shake(25)
+
     audio_play_sound(aEnemyHit,1,false);
     
     // Explode

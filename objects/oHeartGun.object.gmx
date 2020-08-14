@@ -74,6 +74,7 @@ if instance_exists(owner) {
         //If we're clicking
         if mouse_check_button_pressed(fireButton) {
             fire_gun(shot_type, bullet_speed, bullet_direction, kick_back, sound_type)
+            // screen_shake(15) // didn't like shaking on firing much
         }
     }
     

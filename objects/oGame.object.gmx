@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>// TODO spawn an additional player to control after the player kills x enemies???
 
+screen_shake_amount = 0
+
 /* Enemy Spawning */
 seconds_between_spawns = 1;
 seconds_since_last_spawn = 0;
@@ -87,7 +89,38 @@ if seconds_since_last_spawn &gt;= seconds_between_spawns {
     
 }
 
+/*
+// Does not work between sessions as a save system
+if keyboard_check_pressed(vk_down) {
+    game_save("filename")
+}
+if keyboard_check_pressed(vk_up) {
+    game_load("filename")
+}
+*/
 
+// If we've been told to shake the screen by any amount
+if screen_shake_amount &gt; 0 {
+    // Reduce that amount each frame (so we get back to 0 eventually and stabilize)
+    screen_shake_amount -= 5
+} else {
+    // If we've stabilized or don't have screen shake
+    screen_shake_amount = 0
+    // Note default position of the view
+    x = view_xview
+    y = view_yview
+}
+// Apply any screen shake; view position should wobble from normal by amount (at 0 nothing happens)
+shake_x = random_range(-screen_shake_amount, screen_shake_amount)
+shake_y = random_range(-screen_shake_amount, screen_shake_amount)
+view_wview = global.screen_width - abs(shake_x)
+view_hview = global.screen_height - abs(shake_y)
+view_angle = 0 + (shake_x/10)
+view_xview = x + shake_x
+view_yview = y + shake_y
+
+
+// Don't need these anymore since we have a menu
 /* Quitting */
 /*if keyboard_check_pressed(vk_escape) {
     game_end();
