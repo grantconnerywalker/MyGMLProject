@@ -93,14 +93,6 @@ hspeed += kick_x
 vspeed += kick_y
 reset_shunts()
 
-// For now, save system that just saves the player inventory
-if (keyboard_check_pressed(vk_down)) {
-    save_player_data()
-}
-if (keyboard_check_pressed(vk_up)) {
-    load_player_data()
-}
-
 /* Hitting a wall (if about to hit a block, stop) */
 if place_meeting(x + hspeed, y + vspeed, oSolid) {
     
@@ -146,13 +138,20 @@ if mouse_check_button_pressed(mb_right) {
 
 facing = point_direction(x, y, mouse_x, mouse_y);
 
-if power_current &lt;= power_max {
+if power_current &gt;= power_max {
+    
+    // go to next level
+    save_inventory()
+    if room_exists(room_next(room)) room_goto_next(); 
+
+} else {
+    // Can pick up
     power_up_collected = instance_place(x,y,oPowerUp)
     if instance_exists(power_up_collected) {
         with power_up_collected { 
             instance_destroy() 
         }        
-        power_current += 1
+        power_current += 15
     }
 }
 

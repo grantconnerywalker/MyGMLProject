@@ -57,8 +57,8 @@
       <script>scripts\initialize_room.gml</script>
     </scripts>
     <script>scripts\screen_shake.gml</script>
-    <script>scripts\save_player_data.gml</script>
-    <script>scripts\load_player_data.gml</script>
+    <script>scripts\save_inventory.gml</script>
+    <script>scripts\load_inventory.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fTitle</font>
@@ -88,7 +88,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rStart</room>
-    <room>rooms\rGame</room>
+    <room>rooms\rLevel1</room>
+    <room>rooms\rLevel2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

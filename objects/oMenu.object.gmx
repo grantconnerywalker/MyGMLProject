@@ -103,7 +103,7 @@ if mode == "Titles" {
     
     if button_pressed("New Game") {
         mode = "Game"
-        room_goto(rGame)
+        room_goto(rLevel1)
     }
     
     if button_pressed("Quit") {

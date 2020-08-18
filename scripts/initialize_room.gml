@@ -22,3 +22,5 @@ view_hport = global.screen_height;
 
 // Some thing you just have to do for Game Maker apparently
 surface_resize(application_surface, global.screen_width, global.screen_height);
+
+load_inventory()
