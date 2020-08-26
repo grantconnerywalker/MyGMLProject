@@ -1,5 +1,9 @@
 /* Screen Management */
 
+/* TODO 
+global.development_mode = true or something
+*/
+
 // sets fullscreen
 // window_set_fullscreen(true);
 
@@ -24,3 +28,4 @@ view_hport = global.screen_height;
 surface_resize(application_surface, global.screen_width, global.screen_height);
 
 load_inventory()
+save_progress()

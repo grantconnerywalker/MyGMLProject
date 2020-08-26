@@ -58,7 +58,10 @@
     </scripts>
     <script>scripts\screen_shake.gml</script>
     <script>scripts\save_inventory.gml</script>
+    <script>scripts\save_progress.gml</script>
     <script>scripts\load_inventory.gml</script>
+    <script>scripts\load_progress.gml</script>
+    <script>scripts\i_have_line_of_sight_to.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fTitle</font>

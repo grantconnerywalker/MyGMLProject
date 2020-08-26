@@ -151,7 +151,7 @@ if power_current &gt;= power_max {
         with power_up_collected { 
             instance_destroy() 
         }        
-        power_current += 15
+        power_current += 5
     }
 }
 
