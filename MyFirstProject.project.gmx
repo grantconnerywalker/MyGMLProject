@@ -33,6 +33,7 @@
     <sprite>sprites\sEnemy_happy</sprite>
     <sprite>sprites\sprite6</sprite>
     <sprite>sprites\sExplodingEnemy</sprite>
+    <sprite>sprites\sExplodingEnemyAlert</sprite>
     <sprite>sprites\sExplodingEnemyChunk</sprite>
     <sprite>sprites\sSplosion</sprite>
     <sprite>sprites\sSolid</sprite>

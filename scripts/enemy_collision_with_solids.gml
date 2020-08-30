@@ -4,8 +4,9 @@ speed = normal_speed
 
 // If we're about to walk into a wall, change direction until not
 collision_checks = 0;
+direction_to_check = choose(-1,1)
 while place_meeting(x + hspeed, y + vspeed, oSolid) && collision_checks <= 4 {
-    direction += 45
+    direction += random_range(30, 60) * direction_to_check
     collision_checks += 1
 }
 
@@ -13,6 +14,7 @@ while place_meeting(x + hspeed, y + vspeed, oSolid) && collision_checks <= 4 {
 if place_meeting(x + hspeed + kick_x, y + vspeed + kick_y, oSolid) {
     reset_shunts()
 }
+
 // Otherwise shunt
 hspeed += kick_x
 vspeed += kick_y

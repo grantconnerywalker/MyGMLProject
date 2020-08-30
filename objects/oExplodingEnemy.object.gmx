@@ -52,12 +52,22 @@ state = "Idle" // Possible states: Idle, Alert
             <string>/* Some ai stuff */
 if state = "Idle" {
 
+    sprite_index = sExplodingEnemy
+
     // wander aimlessly
     if i_have_line_of_sight_to(oPlayer) {
-        state = "Alert"
+        direction_to_player = point_direction(x,y,oPlayer.x,oPlayer.y)
+        relative_direction_to_player = abs(image_angle - direction_to_player)
+        field_of_view = 90
+        
+        if relative_direction_to_player &lt; (field_of_view/2) || relative_direction_to_player &gt; 360 - (field_of_view/2) {
+            state = "Alert"
+        }
     }
 
 } else if state = "Alert" {
+
+    sprite_index = sExplodingEnemyAlert
 
     // seek the player
     if i_have_line_of_sight_to(oPlayer) {
