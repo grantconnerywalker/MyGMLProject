@@ -102,6 +102,7 @@ if mode == "Titles" {
     current_y += 50
     
     if button_pressed("New Game") {
+        delete_inventory()
         mode = "Game"
         room_goto(rLevel1)
     }

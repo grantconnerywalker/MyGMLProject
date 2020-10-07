@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>image_speed = 10 / room_speed
 initialize_enemy_collision(60, 360)
+image_xscale = 0.5
+image_yscale = image_xscale
 </string>
           </argument>
         </arguments>
@@ -49,7 +51,40 @@ initialize_enemy_collision(60, 360)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/* Facing */
+            <string>/* Drink Water Globs */
+detection_range = 400
+eat_range = 10
+nearest_glob = instance_nearest(x,y,oLiquidShot)
+// Is there a glob?
+if instance_exists(nearest_glob) {
+    // Can we detect it?
+    distance_to_glob = point_distance(x,y,nearest_glob.x,nearest_glob.x)
+    if distance_to_glob &lt; detection_range {
+        // Can we get there?
+        if i_have_line_of_sight_to(nearest_glob) {
+            // Go toward glob
+            direction = point_direction(x,y,nearest_glob.x,nearest_glob.y)
+            if (distance_to_glob &lt; eat_range) {
+                with nearest_glob { instance_destroy() }
+                growth_rate = 0.1
+                max_size = 2
+                if (image_xscale &lt; max_size) {
+                    image_xscale += growth_rate
+                    image_yscale += growth_rate
+                    if place_meeting(x,y,oSolid) {
+                        image_xscale -= growth_rate
+                        image_yscale -= growth_rate
+                    }
+                }
+                // also increment number of globs eaten or something?
+            }
+        }
+    }
+}
+
+
+
+/* Facing */
 
 image_angle = direction;
 stay_inside_room();
@@ -64,7 +99,7 @@ if hit_by_projectile() {
     // TODO make script for this called damage_standard_enemy()
     
     // Destruction based on sprite type, destroy if happy
-    switch (sprite_index) {
+    /*switch (sprite_index) {
         case sEnemy: 
             sprite_index = sEnemy_damaged;
             break;
@@ -78,10 +113,10 @@ if hit_by_projectile() {
             // Destroy damaged enemy
             audio_play_sound(aEnemyDefeat,1,false);
             instance_destroy();
-    }
+    }*/
     
     // Destruction based on image scale, destroy if small
-    /* image_xscale *= 0.8;
+    image_xscale *= 0.8;
     image_yscale *= 0.8;
     if (image_xscale &lt;= 0.6) {
         // Create new enemies
@@ -91,11 +126,12 @@ if hit_by_projectile() {
         
         // Destroy damaged enemy
         instance_destroy();
-    }*/
+    }
     
     // Destruction based on health, destroy if 0
     /*health -= 1;
     if (health &lt;= 0) {
+        audio_play_sound(aEnemyDefeat,1,false);
         instance_destroy();
     }*/
 }

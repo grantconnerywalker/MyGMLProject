@@ -30,7 +30,7 @@
 screen_shake_amount = 0
 
 /* Enemy Spawning */
-seconds_between_spawns = 1;
+seconds_between_spawns = 5;
 seconds_since_last_spawn = 0;
 
 
