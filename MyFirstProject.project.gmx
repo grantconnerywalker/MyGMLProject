@@ -77,14 +77,14 @@
     <object>objects\oWaveGun</object>
     <object>objects\oCatGun</object>
     <object>objects\oEnemy</object>
-    <object>objects\oFaceEnemy</object>
-    <object>objects\oExplodingEnemy</object>
+    <object>objects\oBoomer</object>
+    <object>objects\oSwarmer</object>
     <object>objects\oProjectile</object>
     <object>objects\oBullet</object>
     <object>objects\oCat</object>
-    <object>objects\oLiquidShot</object>
+    <object>objects\oGlob</object>
     <object>objects\oPlayerChunk</object>
-    <object>objects\oExplodingEnemyChunk</object>
+    <object>objects\oSwarmerChunk</object>
     <object>objects\oSplosion</object>
     <object>objects\oSolid</object>
     <object>objects\oGame</object>

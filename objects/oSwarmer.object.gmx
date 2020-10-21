@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>initialize_enemy_collision(70, 360);
 state = "Idle" // Possible states: Idle, Alert
+
+image_xscale = 0.5
+image_yscale = image_xscale
 </string>
           </argument>
         </arguments>
@@ -95,7 +98,7 @@ if hit_by_projectile() {
     audio_play_sound(aEnemyHit,1,false);
     
     // Explode
-    explode_into_number_of_chunks(25, oExplodingEnemyChunk);
+    explode_into_number_of_chunks(25, oSwarmerChunk);
 
 }
 </string>

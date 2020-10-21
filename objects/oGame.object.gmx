@@ -85,7 +85,7 @@ if seconds_since_last_spawn &gt;= seconds_between_spawns {
         randomX = random(room_width);
         randomY = random(room_height);        
     }
-    instance_create(randomX, randomY, choose(oFaceEnemy,oExplodingEnemy,oExplodingEnemy)); // makes oExplodingEnemy 2x as likely to spawn
+    instance_create(randomX, randomY, choose(oBoomer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer)); // makes oSwarmer 8x as likely to spawn
     
 }
 

@@ -27,8 +27,11 @@
             <kind>1</kind>
             <string>seconds_until_splode = random_range(0.1,0.2)
 sploding = false
+
 puddle_lifetime = 2
 seconds_until_fade = puddle_lifetime
+
+host = noone
 </string>
           </argument>
         </arguments>
@@ -70,11 +73,25 @@ if speed &gt; deceleration {
 }
 
 // Push an enemy away when hitting it
-enemy_hit = instance_place(x,y,oEnemy)
-if instance_exists(enemy_hit) {
-    enemy_hit.kick_x += lengthdir_x(speed, direction)
-    enemy_hit.kick_y += lengthdir_y(speed, direction)
+// (unless it's a swarmer, in which case stick to it)
+if instance_exists(host) {
+    // Follow the enemy we stuck to
+    x = host.x
+    y = host.y
+} else {
+    // Did we hit anyone?
+    enemy_hit = instance_place(x,y,oEnemy)
+    if instance_exists(enemy_hit) {
+        // If so, is it the type we can stick to?
+        if (enemy_hit.object_index == oSwarmer) {
+            // Set host (remember who we hit)
+            host = enemy_hit
+        }
+        enemy_hit.kick_x += lengthdir_x(speed, direction)
+        enemy_hit.kick_y += lengthdir_y(speed, direction)
+    }
 }
+
 
 // Blowing up the water when hit
 if (sploding) {

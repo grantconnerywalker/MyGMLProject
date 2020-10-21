@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>image_speed = 10 / room_speed
-initialize_enemy_collision(60, 360)
+initialize_enemy_collision(50, 360)
 image_xscale = 0.5
 image_yscale = image_xscale
 </string>
@@ -53,8 +53,8 @@ image_yscale = image_xscale
             <kind>1</kind>
             <string>/* Drink Water Globs */
 detection_range = 400
-eat_range = 10
-nearest_glob = instance_nearest(x,y,oLiquidShot)
+eat_range = 20
+nearest_glob = instance_nearest(x,y,oGlob)
 // Is there a glob?
 if instance_exists(nearest_glob) {
     // Can we detect it?
@@ -67,7 +67,7 @@ if instance_exists(nearest_glob) {
             if (distance_to_glob &lt; eat_range) {
                 with nearest_glob { instance_destroy() }
                 growth_rate = 0.1
-                max_size = 2
+                max_size = 3
                 if (image_xscale &lt; max_size) {
                     image_xscale += growth_rate
                     image_yscale += growth_rate
@@ -121,7 +121,7 @@ if hit_by_projectile() {
     if (image_xscale &lt;= 0.6) {
         // Create new enemies
         for (i = 0; i &lt; 2; i +=1) {
-            instance_create(random(room_width), random(room_height), oFaceEnemy);   
+            instance_create(random(room_width), random(room_height), oBoomer);   
         }
         
         // Destroy damaged enemy

@@ -49,7 +49,7 @@
           <argument>
             <kind>1</kind>
             <string>// Unique gun variables
-shot_type = oLiquidShot;
+shot_type = oGlob;
 bullet_speed = random_range(600,700) / room_speed;
 bullet_direction = image_angle + random_range(-5,5);
 kick_back = 50 / room_speed;
