@@ -30,6 +30,8 @@ state = "Idle" // Possible states: Idle, Alert
 
 image_xscale = 0.5
 image_yscale = image_xscale
+
+eater = noone
 </string>
           </argument>
         </arguments>
@@ -57,8 +59,9 @@ if state = "Idle" {
 
     sprite_index = sExplodingEnemy
 
-    // wander aimlessly
-    if i_have_line_of_sight_to(oPlayer) {
+    if instance_exists(eater) {
+        state = "Eaten"
+    } else if i_have_line_of_sight_to(oPlayer) {
         direction_to_player = point_direction(x,y,oPlayer.x,oPlayer.y)
         relative_direction_to_player = abs(image_angle - direction_to_player)
         field_of_view = 90
@@ -72,13 +75,20 @@ if state = "Idle" {
 
     sprite_index = sExplodingEnemyAlert
 
-    // seek the player
-    if i_have_line_of_sight_to(oPlayer) {
+    if instance_exists(eater) {
+        state = "Eaten"
+    } else if i_have_line_of_sight_to(oPlayer) {
         direction = point_direction(x,y,oPlayer.x,oPlayer.y)    
     } else {
         state = "Idle"
     }
 
+} else if state = "Eaten" {
+    
+    // Move with the enemy that ate us
+    x = eater.x
+    y = eater.y
+    
 }
 
 
@@ -98,7 +108,7 @@ if hit_by_projectile() {
     audio_play_sound(aEnemyHit,1,false);
     
     // Explode
-    explode_into_number_of_chunks(25, oSwarmerChunk);
+    explode_into_number_of_chunks(15, oSwarmerChunk);
 
 }
 </string>

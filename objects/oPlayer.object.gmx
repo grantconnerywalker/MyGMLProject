@@ -176,6 +176,7 @@ if (y &gt; room_height) {
 enemy_touching_me = instance_place(x, y, oEnemy);
 if (enemy_touching_me) {
 
+    audio_play_sound(aPlayerDeath, 1, false);
     screen_shake(80)
     explode_into_number_of_chunks(oGame.player_bits, oPlayerChunk);
 

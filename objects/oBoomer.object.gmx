@@ -29,6 +29,8 @@
 initialize_enemy_collision(50, 360)
 image_xscale = 0.5
 image_yscale = image_xscale
+
+image_alpha = 0.5
 </string>
           </argument>
         </arguments>
@@ -64,7 +66,13 @@ if instance_exists(nearest_glob) {
         if i_have_line_of_sight_to(nearest_glob) {
             // Go toward glob
             direction = point_direction(x,y,nearest_glob.x,nearest_glob.y)
+            // Are we close enough to eat it?
             if (distance_to_glob &lt; eat_range) {
+                // Eat up
+                if (instance_exists(nearest_glob.host)) {
+                    // If glob is attached, well it we're the one who ate it
+                    nearest_glob.host.eater = id
+                }
                 with nearest_glob { instance_destroy() }
                 growth_rate = 0.1
                 max_size = 3
@@ -96,6 +104,9 @@ if hit_by_projectile() {
     
     audio_play_sound(aEnemyHit,1,false);
     
+    // If we have a swarmer inside us, explode
+    
+    
     // TODO make script for this called damage_standard_enemy()
     
     // Destruction based on sprite type, destroy if happy
@@ -116,7 +127,7 @@ if hit_by_projectile() {
     }*/
     
     // Destruction based on image scale, destroy if small
-    image_xscale *= 0.8;
+    /*image_xscale *= 0.8;
     image_yscale *= 0.8;
     if (image_xscale &lt;= 0.6) {
         // Create new enemies
@@ -126,7 +137,7 @@ if hit_by_projectile() {
         
         // Destroy damaged enemy
         instance_destroy();
-    }
+    }*/
     
     // Destruction based on health, destroy if 0
     /*health -= 1;

@@ -84,6 +84,7 @@
     <object>objects\oCat</object>
     <object>objects\oGlob</object>
     <object>objects\oPlayerChunk</object>
+    <object>objects\oExplodingChunk</object>
     <object>objects\oSwarmerChunk</object>
     <object>objects\oSplosion</object>
     <object>objects\oSolid</object>
