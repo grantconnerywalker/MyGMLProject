@@ -2,7 +2,7 @@
 <object>
   <spriteName>sWaveGun</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>oGun</parentName>
@@ -52,7 +52,7 @@
 shot_type = oGlob;
 bullet_speed = random_range(600,700) / room_speed;
 bullet_direction = image_angle + random_range(-1,1);
-kick_back = 50 / room_speed;
+kick_back = 0 / room_speed;
 sound_type = aWaveGun;
 
 

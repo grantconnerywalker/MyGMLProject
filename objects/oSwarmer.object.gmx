@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>initialize_enemy_collision(70, 360);
+            <string>depth = 10
+
+initialize_enemy_collision(70, 360);
 state = "Idle" // Possible states: Idle, Alert
 
 image_xscale = 0.5
@@ -85,9 +87,14 @@ if state = "Idle" {
 
 } else if state = "Eaten" {
     
-    // Move with the enemy that ate us
-    x = eater.x
-    y = eater.y
+    if instance_exists(eater) {
+        // Move with the enemy that ate us
+        x = eater.x
+        y = eater.y
+    } else {
+        // Our eater has been destroyed
+        explode_into_number_of_chunks(25, oExplodingChunk);
+    }
     
 }
 

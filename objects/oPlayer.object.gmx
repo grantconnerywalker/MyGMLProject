@@ -32,6 +32,9 @@ power_current = 5
 power_max = 50
 
 reset_shunts()
+
+instance_create(x,y,oHeartGun);
+instance_create(x,y,oWaveGun);
 </string>
           </argument>
         </arguments>
@@ -123,6 +126,7 @@ if place_meeting(x + hspeed, y + vspeed, oSolid) {
 
 /* Weapon Switching */
 
+/*
 if mouse_check_button_pressed(mb_right) {
     // Switch to the next weapon up
     selected_weapon_index += 1
@@ -132,7 +136,7 @@ if mouse_check_button_pressed(mb_right) {
     }
     audio_play_sound(aWeaponChange, 1, false);
 }
-
+*/
 
 /* Facing */
 
@@ -178,6 +182,10 @@ if (enemy_touching_me) {
 
     audio_play_sound(aPlayerDeath, 1, false);
     screen_shake(80)
+    
+    with oSwarmer {
+        explode_into_number_of_chunks(5, oSwarmerChunk);        
+    }
     explode_into_number_of_chunks(oGame.player_bits, oPlayerChunk);
 
 }
@@ -212,7 +220,7 @@ if (enemy_touching_me) {
 // Most of these (except for the rot argument) just mean "draw this piece as normal"
 
 // Drawn in order of draw statements
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, direction, image_blend, image_alpha)
+//draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, direction, image_blend, image_alpha)
 
 draw_sprite_ext(sPlayer, image_index, x, y, image_xscale, image_yscale, facing, image_blend, image_alpha)
 </string>

@@ -25,12 +25,16 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 10 / room_speed
-initialize_enemy_collision(50, 360)
+            <string>depth = 0
+
+image_speed = 10 / room_speed
+initialize_enemy_collision(100, 360)
 image_xscale = 0.5
 image_yscale = image_xscale
 
 image_alpha = 0.5
+
+things_eaten = 0
 </string>
           </argument>
         </arguments>
@@ -72,19 +76,20 @@ if instance_exists(nearest_glob) {
                 if (instance_exists(nearest_glob.host)) {
                     // If glob is attached, well it we're the one who ate it
                     nearest_glob.host.eater = id
-                }
-                with nearest_glob { instance_destroy() }
-                growth_rate = 0.1
-                max_size = 3
-                if (image_xscale &lt; max_size) {
-                    image_xscale += growth_rate
-                    image_yscale += growth_rate
-                    if place_meeting(x,y,oSolid) {
-                        image_xscale -= growth_rate
-                        image_yscale -= growth_rate
+                    things_eaten += 1
+                    with nearest_glob { instance_destroy() }
+                    growth_rate = 0.35
+                    max_size = 3
+                    if (image_xscale &lt; max_size) {
+                        image_xscale += growth_rate
+                        image_yscale += growth_rate
+                        if place_meeting(x,y,oSolid) {
+                            image_xscale -= growth_rate
+                            image_yscale -= growth_rate
+                        }
                     }
+                    // also increment number of globs eaten or something?
                 }
-                // also increment number of globs eaten or something?
             }
         }
     }
@@ -102,7 +107,11 @@ enemy_collision_with_solids()
 
 if hit_by_projectile() {
     
-    audio_play_sound(aEnemyHit,1,false);
+    if (things_eaten &gt; 0) {
+        //explode_into_number_of_chunks()
+        audio_play_sound(aEnemyHit,1,false);
+        instance_destroy()    
+    }
     
     // If we have a swarmer inside us, explode
     

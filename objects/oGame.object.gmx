@@ -30,9 +30,9 @@
 screen_shake_amount = 0
 
 /* Enemy Spawning */
-seconds_between_spawns = 5;
+seconds_between_spawns = 1;
 seconds_since_last_spawn = 0;
-
+maximum_swarmers = 500;
 
 /* Global Constants */
 player_bits = 16;
@@ -71,7 +71,6 @@ seconds_since_last_spawn += 1/room_speed;
 
 if seconds_since_last_spawn &gt;= seconds_between_spawns {
     // Spawn enemy
-    seconds_since_last_spawn = 0;
     if choose(true, false) {
         randomX = random(room_width);
         randomY = choose(0, room_height);
@@ -85,7 +84,11 @@ if seconds_since_last_spawn &gt;= seconds_between_spawns {
         randomX = random(room_width);
         randomY = random(room_height);        
     }
-    instance_create(randomX, randomY, choose(oBoomer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer,oSwarmer)); // makes oSwarmer 8x as likely to spawn
+    if instance_number(oSwarmer) &lt; maximum_swarmers {
+        instance_create(randomX, randomY, oSwarmer);
+    }
+    
+    seconds_since_last_spawn = 0
     
 }
 
