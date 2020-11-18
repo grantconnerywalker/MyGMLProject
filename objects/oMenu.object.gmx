@@ -51,10 +51,16 @@
             <string>
 /* Quitting */
 if keyboard_check_pressed(vk_escape) {
-    if mode == "Game" {
+    if mode != "Titles" {
         mode = "Titles"
     } else {
         mode = "Game"
+    }
+}
+
+if instance_number(oEnemy) &lt; 1 {
+    if mode == "Game" {
+        mode = "Victory"
     }
 }
 
@@ -111,7 +117,32 @@ if mode == "Titles" {
         game_end()
     
     }
-} /* else if mode == "Game" {
+} else if mode == "Victory" {
+
+        // Centers x and y (place x at half of view in each direction
+    x = view_hport[0] / 1.1
+    y = 200
+    
+    current_y = y
+    current_x = x
+    margin = 10
+    
+    
+    draw_set_halign(fa_center)
+    
+    draw_set_font(fMenu)
+    draw_text_and_update_current_y("Anger Eliminated")
+    
+    current_y += 50
+    
+    if button_pressed("Next Level") {
+        mode = "Game"
+        room_goto(rLevel1);
+    }
+
+}
+
+/* else if mode == "Game" {
     
     if instance_exists(oPlayer) {
 

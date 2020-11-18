@@ -1,5 +1,6 @@
 if file_exists("Progress.txt") {
 
+/*
         // Read save file
         save_file = file_text_open_read("Progress.txt")
         
@@ -14,5 +15,5 @@ if file_exists("Progress.txt") {
         file_text_close(save_file)
         
         oMenu.mode = "Game"
-
+*/
 }

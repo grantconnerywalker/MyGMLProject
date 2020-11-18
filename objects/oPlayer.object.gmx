@@ -33,8 +33,12 @@ power_max = 50
 
 reset_shunts()
 
-instance_create(x,y,oHeartGun);
-instance_create(x,y,oWaveGun);
+if !(instance_exists(instance_place(x,y,oHeartGun))) {
+    instance_create(x,y,oHeartGun)
+}
+if !(instance_exists(instance_place(x,y,oWaveGun))) {
+    instance_create(x,y,oWaveGun)
+}
 </string>
           </argument>
         </arguments>
@@ -142,6 +146,10 @@ if mouse_check_button_pressed(mb_right) {
 
 facing = point_direction(x, y, mouse_x, mouse_y);
 
+
+
+/* Level Changing */
+/*
 if power_current &gt;= power_max {
     
     // go to next level
@@ -158,6 +166,7 @@ if power_current &gt;= power_max {
         power_current += 5
     }
 }
+*/
 
 /* Stay Inside Room */
 
@@ -184,7 +193,8 @@ if (enemy_touching_me) {
     screen_shake(80)
     
     with oSwarmer {
-        explode_into_number_of_chunks(5, oSwarmerChunk);        
+        // explode_into_number_of_chunks(5, oSwarmerChunk);
+        direction = point_direction(oPlayer.x,oPlayer.y,x,y);
     }
     explode_into_number_of_chunks(oGame.player_bits, oPlayerChunk);
 

@@ -70,21 +70,22 @@ audio_play_sound(aGameStart, 1, false);
 seconds_since_last_spawn += 1/room_speed;
 
 if seconds_since_last_spawn &gt;= seconds_between_spawns {
-    // Spawn enemy
-    if choose(true, false) {
-        randomX = random(room_width);
-        randomY = choose(0, room_height);
-    } else {
-        randomX = choose(0, room_width);
-        randomY = random(room_height);
-    }
-    
+
     // Loop should prevent enemy from spawning on Player
-    while instance_exists(instance_place(x,y,oPlayer)) {
+    // TODO revisit this instance_exists thing? need to stop enemies spawning
+    while instance_exists(instance_place(x,y,oPlayer)) &amp;&amp; (instance_number(oBoomer)) &gt; 0 {
         randomX = random(room_width);
         randomY = random(room_height);        
     }
     if instance_number(oSwarmer) &lt; maximum_swarmers {
+        // Spawn enemy
+        if choose(true, false) {
+            randomX = random(room_width);
+            randomY = choose(0, room_height);
+        } else {
+            randomX = choose(0, room_width);
+            randomY = random(room_height);
+        }
         instance_create(randomX, randomY, oSwarmer);
     }
     

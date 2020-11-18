@@ -29,21 +29,30 @@
     <sprite>sprites\sLiquidShot</sprite>
     <sprite>sprites\sPowerUp</sprite>
     <sprite>sprites\sEnemy</sprite>
+    <sprite>sprites\sEnemyChunk</sprite>
     <sprite>sprites\sEnemy_damaged</sprite>
     <sprite>sprites\sEnemy_happy</sprite>
     <sprite>sprites\sprite6</sprite>
     <sprite>sprites\sExplodingEnemy</sprite>
     <sprite>sprites\sExplodingEnemyAlert</sprite>
     <sprite>sprites\sExplodingEnemyChunk</sprite>
+    <sprite>sprites\sExplodingEnemySplat</sprite>
     <sprite>sprites\sSplosion</sprite>
     <sprite>sprites\sSolid</sprite>
+    <sprite>sprites\sTint_new</sprite>
+    <sprite>sprites\sTomTint</sprite>
+    <sprite>sprites\sTint</sprite>
+    <sprite>sprites\sSwarmerSplat</sprite>
+    <sprite>sprites\sBoomerSplat</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
     <background>background\background1</background>
+    <background>background\background3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\NOTES.gml</script>
     <script>scripts\explode_into_number_of_chunks.gml</script>
     <script>scripts\stay_inside_room.gml</script>
     <script>scripts\hit_by_projectile.gml</script>
@@ -64,33 +73,39 @@
     <script>scripts\delete_inventory.gml</script>
     <script>scripts\load_progress.gml</script>
     <script>scripts\i_have_line_of_sight_to.gml</script>
+    <script>scripts\generate_level.gml</script>
+    <script>scripts\projectile_hit_something.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fTitle</font>
     <font>fonts\fMenu</font>
   </fonts>
   <objects name="objects">
-    <object>objects\NOTES</object>
     <object>objects\oPlayer</object>
     <object>objects\oGun</object>
+    <object>objects\oProjectile</object>
     <object>objects\oHeartGun</object>
+    <object>objects\oBullet</object>
     <object>objects\oWaveGun</object>
     <object>objects\oCatGun</object>
     <object>objects\oEnemy</object>
     <object>objects\oBoomer</object>
     <object>objects\oSwarmer</object>
-    <object>objects\oProjectile</object>
-    <object>objects\oBullet</object>
     <object>objects\oCat</object>
     <object>objects\oGlob</object>
     <object>objects\oPlayerChunk</object>
     <object>objects\oExplodingChunk</object>
+    <object>objects\oBoomerChunk</object>
     <object>objects\oSwarmerChunk</object>
+    <object>objects\object22</object>
+    <object>objects\oSwarmerSplat</object>
+    <object>objects\oBoomerSplat</object>
     <object>objects\oSplosion</object>
     <object>objects\oSolid</object>
     <object>objects\oGame</object>
     <object>objects\oMenu</object>
     <object>objects\oPowerUp</object>
+    <object>objects\oTint</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rStart</room>
