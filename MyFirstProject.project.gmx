@@ -38,6 +38,7 @@
     <sprite>sprites\sExplodingEnemyChunk</sprite>
     <sprite>sprites\sExplodingEnemySplat</sprite>
     <sprite>sprites\sSplosion</sprite>
+    <sprite>sprites\sSolidBlack</sprite>
     <sprite>sprites\sSolid</sprite>
     <sprite>sprites\sTint_new</sprite>
     <sprite>sprites\sTomTint</sprite>
