@@ -76,10 +76,16 @@
     <script>scripts\i_have_line_of_sight_to.gml</script>
     <script>scripts\generate_level.gml</script>
     <script>scripts\projectile_hit_something.gml</script>
+    <scripts name="DebugLog">
+      <script>scripts\DebugLogInitialize.gml</script>
+      <script>scripts\DebugLog.gml</script>
+      <script>scripts\DebugLogDraw.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fTitle</font>
     <font>fonts\fMenu</font>
+    <font>fonts\fDebug</font>
   </fonts>
   <objects name="objects">
     <object>objects\oPlayer</object>

@@ -61,7 +61,8 @@ if !(instance_exists(instance_place(x,y,oWaveGun))) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/* Movement */
+            <string>DebugLog(speed, "PlayerSpeed")
+/* Movement */
 
 var defaultSpeed = 300 / room_speed
 speed = 0
