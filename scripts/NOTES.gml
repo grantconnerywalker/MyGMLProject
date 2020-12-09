@@ -12,6 +12,13 @@ git commit -m "[Message here]"
 git push origin experiment
 
 
-Left off beginning of ep 21
+Left off beginning of ep 24
+
+*/
+
+/* Bugs to Resolve 
+- Boomers sometimes still won't chase after water
+- Boomers sometimes have issues eating water the are chasing (and next to); they also flicker oddly
+
 
 */

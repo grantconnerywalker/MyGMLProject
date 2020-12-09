@@ -74,11 +74,11 @@ if seconds_since_last_spawn &gt;= seconds_between_spawns {
 
     // Loop should prevent enemy from spawning on Player
     // TODO revisit this instance_exists thing? need to stop enemies spawning
-    while instance_exists(instance_place(x,y,oPlayer)) &amp;&amp; (instance_number(oBoomer)) &gt; 0 {
+    while instance_exists(instance_place(x,y,oPlayer)) {
         randomX = random(room_width);
         randomY = random(room_height);        
     }
-    if instance_number(oSwarmer) &lt; maximum_swarmers {
+    if instance_number(oSwarmer) &lt; maximum_swarmers &amp;&amp; instance_number(oBoomer) &gt; 0 &amp;&amp; room = rLevel1 {
         // Spawn enemy
         if choose(true, false) {
             randomX = random(room_width);

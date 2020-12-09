@@ -53,70 +53,74 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\NOTES.gml</script>
-    <script>scripts\explode_into_number_of_chunks.gml</script>
-    <script>scripts\stay_inside_room.gml</script>
-    <script>scripts\hit_by_projectile.gml</script>
     <script>scripts\can_be_picked_up.gml</script>
-    <script>scripts\fire_gun.gml</script>
-    <script>scripts\reset_shunts.gml</script>
-    <script>scripts\enemy_collision_with_solids.gml</script>
-    <script>scripts\initialize_enemy_collision.gml</script>
-    <scripts name="Menus">
-      <script>scripts\draw_text_and_update_current_y.gml</script>
-      <script>scripts\button_pressed.gml</script>
-      <script>scripts\initialize_room.gml</script>
-    </scripts>
-    <script>scripts\screen_shake.gml</script>
-    <script>scripts\save_inventory.gml</script>
-    <script>scripts\save_progress.gml</script>
-    <script>scripts\load_inventory.gml</script>
-    <script>scripts\delete_inventory.gml</script>
-    <script>scripts\load_progress.gml</script>
-    <script>scripts\i_have_line_of_sight_to.gml</script>
-    <script>scripts\generate_level.gml</script>
-    <script>scripts\projectile_hit_something.gml</script>
     <scripts name="DebugLog">
       <script>scripts\DebugLogInitialize.gml</script>
       <script>scripts\DebugLog.gml</script>
       <script>scripts\DebugLogDraw.gml</script>
     </scripts>
+    <script>scripts\delete_inventory.gml</script>
+    <script>scripts\enemy_collision_with_solids.gml</script>
+    <script>scripts\explode_into_number_of_chunks.gml</script>
+    <script>scripts\fire_gun.gml</script>
+    <script>scripts\generate_level.gml</script>
+    <script>scripts\hit_by_projectile.gml</script>
+    <script>scripts\i_have_line_of_sight_to.gml</script>
+    <script>scripts\initialize_enemy_collision.gml</script>
+    <script>scripts\load_inventory.gml</script>
+    <script>scripts\load_progress.gml</script>
+    <scripts name="Menus">
+      <script>scripts\draw_text_and_update_current_y.gml</script>
+      <script>scripts\button_pressed.gml</script>
+      <script>scripts\initialize_room.gml</script>
+    </scripts>
+    <script>scripts\NOTES.gml</script>
+    <script>scripts\projectile_hit_something.gml</script>
+    <script>scripts\reset_shunts.gml</script>
+    <script>scripts\save_inventory.gml</script>
+    <script>scripts\save_progress.gml</script>
+    <script>scripts\screen_shake.gml</script>
+    <script>scripts\stay_inside_room.gml</script>
+    <script>scripts\initialize_playable_level.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fTitle</font>
+    <font>fonts\fTutorial</font>
     <font>fonts\fMenu</font>
     <font>fonts\fDebug</font>
   </fonts>
   <objects name="objects">
-    <object>objects\oPlayer</object>
-    <object>objects\oGun</object>
-    <object>objects\oProjectile</object>
-    <object>objects\oHeartGun</object>
+    <object>objects\object22</object>
+    <object>objects\oBoomer</object>
+    <object>objects\oBoomerChunk</object>
+    <object>objects\oBoomerSplat</object>
     <object>objects\oBullet</object>
-    <object>objects\oWaveGun</object>
+    <object>objects\oCat</object>
     <object>objects\oCatGun</object>
     <object>objects\oEnemy</object>
-    <object>objects\oBoomer</object>
-    <object>objects\oSwarmer</object>
-    <object>objects\oCat</object>
-    <object>objects\oGlob</object>
-    <object>objects\oPlayerChunk</object>
     <object>objects\oExplodingChunk</object>
-    <object>objects\oBoomerChunk</object>
-    <object>objects\oSwarmerChunk</object>
-    <object>objects\object22</object>
-    <object>objects\oSwarmerSplat</object>
-    <object>objects\oBoomerSplat</object>
-    <object>objects\oSplosion</object>
-    <object>objects\oSolid</object>
     <object>objects\oGame</object>
+    <object>objects\oGlob</object>
+    <object>objects\oGun</object>
+    <object>objects\oHeartGun</object>
     <object>objects\oMenu</object>
+    <object>objects\oPlayer</object>
+    <object>objects\oPlayerChunk</object>
     <object>objects\oPowerUp</object>
+    <object>objects\oProjectile</object>
+    <object>objects\oSolid</object>
+    <object>objects\oSplosion</object>
+    <object>objects\oSwarmer</object>
+    <object>objects\oSwarmerChunk</object>
+    <object>objects\oSwarmerSplat</object>
     <object>objects\oTint</object>
+    <object>objects\oTutorial</object>
+    <object>objects\oWaveGun</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rStart</room>
     <room>rooms\rLevel1</room>
+    <room>rooms\rTutorial</room>
     <room>rooms\rLevel2</room>
   </rooms>
   <help>

@@ -1,8 +1,4 @@
-instance_create(room_width / 2, room_height / 2, oPlayer)
-
-if !instance_exists(oGame) {
-    instance_create(room_width / 2, room_height / 2, oGame)
-}
+initialize_playable_level()
 
 // spawn obstacles
 number_of_blocks = irandom_range(5,20)
